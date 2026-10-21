@@ -185,7 +185,6 @@ impl PmemMmap {
             .write(!read_only)
             .open(path)
             .map_err(PmemError::BackingFile)?;
-        // SEEK_END reports the size of both regular files and block devices.
         let file_len = file
             .seek(SeekFrom::End(0))
             .map_err(PmemError::BackingFile)?;
