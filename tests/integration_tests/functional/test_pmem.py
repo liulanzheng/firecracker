@@ -80,6 +80,8 @@ def test_pmem_block_device_backing(uvm, huge_pages):
     Test that a block device can be used as pmem backing.
     """
     vm = uvm
+    vm.memory_monitor = None
+    vm.monitors = []
     vm.spawn()
     vm.basic_config(add_root_device=True, huge_pages=huge_pages)
     vm.add_net_iface()
